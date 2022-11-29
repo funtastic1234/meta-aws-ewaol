@@ -58,6 +58,35 @@ From meta-aws-ewaol directory, run the bash script. Replace <S3_BUCKET_IMPORT_IM
 bash scripts/create-ami.sh <S3_BUCKET_IMPORT_IMAGES> <AMI_DISK_SIZE_IN_GB>
 ```
 
+[andy added ]above wont be able to download the raw image - before running the bsd script to create needed policy in the S# bucket - please note public access setting is not needed ! you dont need to change that just attach below policy to the bucket 
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "*",
+            "Resource": "arn:aws:s3:::cf-templates-w3immm4n01yl-eu-central-1/*"
+        }
+    ]
+}
+```
+
+![image](https://user-images.githubusercontent.com/54641546/204578991-658c89cb-acab-4907-b100-98c9c4b0ebe8.png)
+
+
+
+script result 
+
+![image](https://user-images.githubusercontent.com/54641546/204579331-80513cfc-39dd-4dc4-8412-2dd7c7c6eccd.png)
+
+
+
+when you have errors with not adding th epolicy !
+
+![image](https://user-images.githubusercontent.com/54641546/204579622-e919a539-c9a9-408d-a70b-d515bf5f48b1.png)
+
 ## Launch the EC2 Image as usual using your newly created AMI
 
 1. In the Web Console, Navigate to EC2->Images->AMIs
